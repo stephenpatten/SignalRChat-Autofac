@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.Web", "SignalRChat.Web\SignalRChat.Web.csproj", "{6BBC3153-C3DB-4831-B96D-7E0F314B84BD}"
 EndProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6C8958
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.Contracts", "SignalRChat.Contracts\SignalRChat.Contracts.csproj", "{12E8C18C-2642-4B44-927C-5BF37E088A08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,8 +30,15 @@ Global
 		{DE9FA31E-3255-4CDC-978F-976E76A53F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE9FA31E-3255-4CDC-978F-976E76A53F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE9FA31E-3255-4CDC-978F-976E76A53F22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E8C18C-2642-4B44-927C-5BF37E088A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E8C18C-2642-4B44-927C-5BF37E088A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E8C18C-2642-4B44-927C-5BF37E088A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E8C18C-2642-4B44-927C-5BF37E088A08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E6CF024-99DA-4943-B0AC-8BBC7AF3E327}
 	EndGlobalSection
 EndGlobal

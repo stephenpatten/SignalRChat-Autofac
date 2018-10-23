@@ -1,23 +1,20 @@
-﻿using Microsoft.AspNet.SignalR;
-
+﻿using MassTransit;
+using Microsoft.AspNet.SignalR;
+using SignalRChat.Contracts;
+ 
 namespace SignalRChat.Web.Hubs
 {
     public class ChatHub : Hub
     {
-        public ChatHub(TestClass a)
+        private readonly IBus _bus;
+ 
+        public ChatHub(IBus bus)
         {
-            // We don't need TestClass, but this is a sanity check so we know that DI is working
-            var b = a;
+            _bus = bus;
         }
         public void Send(string name, string message)
         {
-            // Call the addNewMessageToPage method to update clients.
-            Clients.All.addNewMessageToPage(name, message);
+            _bus.Publish<ISendChat>(new { Name = name, Message = message });
         }
-    }
-
-    public class TestClass
-    {
-        public string Name { get; set; }
     }
 }

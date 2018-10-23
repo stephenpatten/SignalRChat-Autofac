@@ -6,6 +6,10 @@ using Owin;
 
 namespace SignalRChat.Web.Bootstrapper
 {
+    using MassTransit;
+
+    using Microsoft.AspNet.SignalR.Infrastructure;
+
     public class Startup
     {
         public void Configuration(IAppBuilder app)
@@ -24,6 +28,18 @@ namespace SignalRChat.Web.Bootstrapper
             // Register the Autofac middleware FIRST, then the standard SignalR middleware.
             app.UseAutofacMiddleware(container);
             app.MapSignalR("/signalr", hubConfig);
+
+            // There's not a lot of documentation or discussion for owin getting the hubcontext
+            // Got this from here: https://stackoverflow.com/questions/29783898/owin-signalr-autofac
+            var builder = new ContainerBuilder();
+            var connManager = hubConfig.Resolver.Resolve<IConnectionManager>();
+            builder.RegisterInstance(connManager)
+                .As<IConnectionManager>()
+                .SingleInstance();
+            builder.Update(container);
+ 
+            // Starts the bus.
+            container.Resolve<IBusControl>().Start();
         }
     }
 }
