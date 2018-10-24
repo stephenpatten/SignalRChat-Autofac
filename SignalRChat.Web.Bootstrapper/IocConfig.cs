@@ -1,10 +1,13 @@
-﻿using Autofac.Integration.SignalR;
-using SignalRChat.Web.Bootstrapper.Modules;
-using System.Reflection;
-using Autofac;
-
+﻿
 namespace SignalRChat.Web.Bootstrapper
 {
+    using System.Reflection;
+
+    using Autofac;
+    using Autofac.Integration.SignalR;
+
+    using SignalRChat.Web.Bootstrapper.Modules;
+
     public class IocConfig
     {
         public static IContainer RegisterDependencies()
