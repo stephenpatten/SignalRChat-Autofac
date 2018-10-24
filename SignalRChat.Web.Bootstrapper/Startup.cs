@@ -31,13 +31,19 @@ namespace SignalRChat.Web.Bootstrapper
             app.UseAutofacMiddleware(container);
             app.MapSignalR("/signalr", hubConfig);
 
+            // http://docs.autofac.org/en/latest/integration/signalr.html
+            // https://stackoverflow.com/questions/33511095/how-to-configure-autofac-and-signalr-in-a-mvc-5-application
             // There's not a lot of documentation or discussion for owin getting the hubcontext
             // Got this from here: https://stackoverflow.com/questions/29783898/owin-signalr-autofac
+            // http://www.ilove-it.com/post/2017/01/05/autofac-with-signalr-and-webapi-in-owin-registration-solution-without-using-container-update
             var builder = new ContainerBuilder();
+
             var connManager = hubConfig.Resolver.Resolve<IConnectionManager>();
+
             builder.RegisterInstance(connManager)
                 .As<IConnectionManager>()
                 .SingleInstance();
+
             builder.Update(container);
  
             // Starts the bus.
